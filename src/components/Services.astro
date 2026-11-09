@@ -1,0 +1,59 @@
+---
+import Icon from "./Icon.astro";
+import FutureLink from "./FutureLink.astro";
+import ImageSlot from "./ImageSlot.astro";
+import { SERVICE_GROUPS, BOT_HREF, NOTE } from "../data/site";
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+<section id="services" class="services" data-rec="R-102,R-103,R-104" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="services-title" class="section-title">Послуги</h2>
+      <p class="services__promise"><span class="value-inline">Вартість і терміни узгоджуємо наперед<span class="tick" aria-hidden="true"></span></span></p>
+    </div>
+
+    <ol class="order-list">
+      <li class="svc svc--lead" data-svc data-svc-lead data-open="true">
+        <div class="svc__head">
+          <span class="svc__n num" aria-hidden="true">01</span>
+          <h3 class="svc__name">Комплексна діагностика</h3>
+          <button class="svc__toggle" type="button" aria-expanded="true" aria-controls="svc-body-1" data-svc-toggle>
+            <span class="visually-hidden">Діагностика</span><Icon name="chevron" size={22} />
+          </button>
+        </div>
+        <div class="svc__body" id="svc-body-1">
+          <div class="svc__lead-grid">
+            <dl class="svc__values" data-ticks>
+              <div style="--i:0"><dt>Ходова і гальма</dt><dd><span class="value">110 пунктів<span class="tick" aria-hidden="true"></span></span></dd></div>
+              <div style="--i:1"><dt>Тривалість</dt><dd><span class="value">≈ 1 година<span class="tick" aria-hidden="true"></span></span></dd></div>
+            </dl>
+            <p class="svc__works">Почніть з діагностики, якщо не знаєте причини: перевіряємо ходову і гальма за 110 пунктами, близько години. Після неї узгоджуємо ремонт, вартість і терміни.</p>
+            <div class="svc__actions">
+              <a class="btn btn--primary" href={BOT_HREF} target="_blank" rel="noopener"><Icon name="telegram" />Записатися на діагностику</a>
+              <FutureLink note={NOTE} class="svc__more">Детальніше</FutureLink>
+            </div>
+            <ImageSlot caption="діагностика на вібростенді" ratio="3/2" class="svc__image" />
+          </div>
+        </div>
+      </li>
+      {SERVICE_GROUPS.map((g, i) => (
+        <li class="svc" data-svc data-open="true">
+          <div class="svc__head">
+            <span class="svc__n num" aria-hidden="true">{pad(i + 2)}</span>
+            <h3 class="svc__name">{g.name}</h3>
+            <button class="svc__toggle" type="button" aria-expanded="true" aria-controls={`svc-body-${i + 2}`} data-svc-toggle>
+              <span class="visually-hidden">Роботи: {g.name}</span><Icon name="chevron" size={22} />
+            </button>
+          </div>
+          <div class="svc__body" id={`svc-body-${i + 2}`}>
+            <p class="svc__works">{g.works}</p>
+            <div class="svc__actions">
+              <a class="text-link svc__book" href={BOT_HREF} target="_blank" rel="noopener">Записатися<span class="visually-hidden">: {g.name.toLowerCase()}, Telegram</span><Icon name="arrow" size={18} /></a>
+              <FutureLink note={NOTE} class="svc__more">Детальніше</FutureLink>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

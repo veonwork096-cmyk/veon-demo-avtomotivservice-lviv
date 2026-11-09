@@ -1,0 +1,31 @@
+---
+import Icon from "./Icon.astro";
+import FutureLink from "./FutureLink.astro";
+import { PHONE_HREF, PHONE_TEXT, NOTE } from "../data/site";
+// W-F003, W-F005, W-F004, W-F006
+const terms = [
+  { title: "Гарантія", value: "1 рік / 10 тис. км", text: "На оригінальні запчастини — 1 рік або 10 тис. км. На виконані роботи — 30 діб.", more: "Умови гарантії" },
+  { title: "Оплата частинами", value: "до 7 платежів", text: "Від 5 000 грн: 3, 5 або 7 платежів без переплати через ПриватБанк, monobank чи А-банк.", more: "Оплата частинами" },
+  { title: "Підмінне авто", value: "10 грн/км", text: "VW e-Golf на час обслуговування: повний заряд і страховка включені.", more: "Підмінне авто" },
+  { title: "Ціна і терміни", value: "Наперед", text: "Вартість і терміни узгоджуємо до початку робіт. Поки чекаєте — кава і Wi-Fi у зоні очікування.", more: null },
+];
+---
+<section id="terms" class="terms on-field" aria-labelledby="terms-title">
+  <div class="container">
+    <h2 id="terms-title" class="section-title">Умови, які знаєте до ремонту</h2>
+    <ul class="terms__grid" data-ticks>
+      {terms.map((t, i) => (
+        <li class="term" style={`--i:${i}`}>
+          <h3 class="term__title">{t.title}</h3>
+          <p class="term__value"><span class="value">{t.value}<span class="tick" aria-hidden="true"></span></span></p>
+          <p class="term__text">{t.text}</p>
+          {t.more && <FutureLink note={NOTE} class="term__more">{t.more}</FutureLink>}
+        </li>
+      ))}
+    </ul>
+    <div class="terms__cta">
+      <p class="terms__cta-text">Дорогий ремонт? Обговоримо обсяг, ціну й оплату за телефоном <span class="num">{PHONE_TEXT}</span>.</p>
+      <a class="btn btn--primary" href={PHONE_HREF}><Icon name="phone" />Обговорити ремонт<span class="visually-hidden">: {PHONE_TEXT}</span></a>
+    </div>
+  </div>
+</section>

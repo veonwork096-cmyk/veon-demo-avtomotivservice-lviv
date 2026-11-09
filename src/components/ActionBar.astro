@@ -1,0 +1,8 @@
+---
+import Icon from "./Icon.astro";
+import { BOT_HREF, PHONE_HREF } from "../data/site";
+---
+<div class="action-bar on-field" data-action-bar data-rec="R-101" role="region" aria-label="Швидкі дії">
+  <a class="btn btn--primary" href={BOT_HREF} target="_blank" rel="noopener"><Icon name="telegram" size={18} />Записатися</a>
+  <a class="btn btn--ghost-field" href={PHONE_HREF}><Icon name="phone" size={18} />Подзвонити</a>
+</div>

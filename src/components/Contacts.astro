@@ -1,0 +1,24 @@
+---
+import Icon from "./Icon.astro";
+import ImageSlot from "./ImageSlot.astro";
+import { BOT_HREF, PHONE_HREF, PHONE_TEXT, MAP_HREF } from "../data/site";
+---
+<section id="contacts" class="contacts on-field" data-rec="R-106" aria-labelledby="contacts-title">
+  <div class="container contacts__grid">
+    <div class="contacts__main">
+      <h2 id="contacts-title" class="contacts__title"><span class="visually-hidden">Контакти: вул. </span>Хлібна, 4</h2>
+      <dl class="contacts__fields">
+        <div><dt>Місто</dt><dd>Львів</dd></div>
+        <div><dt>Графік</dt><dd class="num">щодня 8:00–19:00</dd></div>
+        <div><dt>Телефон</dt><dd class="num">{PHONE_TEXT}</dd></div>
+      </dl>
+      <div class="contacts__actions">
+        <a class="btn btn--primary" href={PHONE_HREF}><Icon name="phone" />Подзвонити <span class="num">{PHONE_TEXT}</span></a>
+        <a class="btn btn--ghost-field" href={BOT_HREF} target="_blank" rel="noopener"><Icon name="telegram" />Записатися в Telegram</a>
+        <a class="btn btn--ghost-field" href={MAP_HREF} target="_blank" rel="noopener"><Icon name="pin" />Відкрити на карті</a>
+      </div>
+      <p class="contacts__network">Львівська філія мережі Avtomotiv Service — 6 міст України.</p>
+    </div>
+    <ImageSlot caption="фасад СТО на Хлібній, 4" ratio="4/3" class="contacts__image" />
+  </div>
+</section>

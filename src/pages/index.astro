@@ -1,0 +1,39 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import Terms from "../components/Terms.astro";
+import Reviews from "../components/Reviews.astro";
+import Brands from "../components/Brands.astro";
+import Contacts from "../components/Contacts.astro";
+import Footer from "../components/Footer.astro";
+import ActionBar from "../components/ActionBar.astro";
+import { SOCIALS } from "../data/site";
+
+const title = "СТО у Львові для Audi, VW, Skoda — Avtomotiv Service, Хлібна, 4";
+const description = "Сервіс VAG у Львові на вул. Хлібній, 4: діагностика 110 пунктів за ≈ 1 годину, гарантія, оплата частинами, підмінне авто. Щодня 8:00–19:00";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  name: "Avtomotiv Service — Львів",
+  telephone: "+380800337779",
+  address: { "@type": "PostalAddress", streetAddress: "вул. Хлібна, 4", addressLocality: "Львів", addressCountry: "UA" },
+  openingHours: "Mo-Su 08:00-19:00",
+  sameAs: SOCIALS.map((s) => s.href),
+};
+---
+<Base lang="uk" title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <Header slot="header" />
+  <Hero />
+  <Services />
+  <Terms />
+  <Reviews />
+  <Brands />
+  <Contacts />
+  <Fragment slot="footer">
+    <Footer />
+    <ActionBar />
+  </Fragment>
+</Base>

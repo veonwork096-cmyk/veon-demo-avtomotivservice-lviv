@@ -1,0 +1,43 @@
+---
+import Icon from "./Icon.astro";
+import { BOT_HREF, PHONE_HREF, PHONE_TEXT } from "../data/site";
+const fields = [
+  { n: "01", label: "Адреса", value: "вул. Хлібна, 4", link: { href: "#contacts", text: "Як доїхати" } },
+  { n: "02", label: "Графік", value: "щодня 8:00–19:00" },
+  { n: "03", label: "Діагностика", value: "110 пунктів, ≈ 1 година" },
+  { n: "04", label: "Ціна", value: "узгоджуємо наперед" },
+];
+---
+<section id="hero" class="hero" data-rec="R-100,R-110,R-200,R-203,S-R-008" data-hero>
+  <div class="container hero__grid">
+    <h1 class="hero__title">СТО для Audi, Volkswagen і&nbsp;Skoda у&nbsp;Львові</h1>
+
+    <div class="hero__main">
+      <dl class="hero__where" data-rec="R-106">
+        <div><dt class="visually-hidden">Адреса</dt><dd>вул. Хлібна, 4</dd></div>
+        <div><dt class="visually-hidden">Графік</dt><dd>щодня 8:00–19:00</dd></div>
+      </dl>
+      <p class="hero__lead">Сервіс на вул. Хлібній, 4: вартість і терміни ремонту узгоджуємо до початку робіт.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href={BOT_HREF} target="_blank" rel="noopener"><Icon name="telegram" />Записатися в Telegram</a>
+        <a class="btn btn--ghost" href={PHONE_HREF}><Icon name="phone" />Подзвонити <span class="num">{PHONE_TEXT}</span></a>
+      </div>
+      <a class="rating-line" href="#reviews" data-rec="R-105">
+        <span class="stars" aria-hidden="true">{[1, 2, 3, 4, 5].map(() => <Icon name="star" size={18} />)}</span>
+        <span><strong class="num">5,0</strong> · <span class="num">193</span> відгуки в Google</span>
+      </a>
+    </div>
+
+    <dl class="order-head" data-ticks data-rec="R-100,R-106">
+      {fields.map((f, i) => (
+        <div class="order-field" style={`--i:${i}`}>
+          <dt class="order-field__key"><span class="order-field__n num">{f.n}</span>{f.label}</dt>
+          <dd class="order-field__value">
+            <span class="value">{f.value}<span class="tick" aria-hidden="true"></span></span>
+            {f.link && <a class="text-link order-field__link" href={f.link.href}>{f.link.text}<Icon name="arrow" size={16} /></a>}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

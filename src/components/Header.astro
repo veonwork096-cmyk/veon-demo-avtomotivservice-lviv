@@ -1,0 +1,45 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import { NAV, PHONE_HREF, PHONE_TEXT, BOT_HREF } from "../data/site";
+---
+<header class="site-header" data-header>
+  <div class="container site-header__bar">
+    <a class="site-header__brand" href="#top">
+      <Logo class="site-header__logo" title="Avtomotiv Service — на початок сторінки" />
+    </a>
+    <span class="site-header__city">Львів</span>
+
+    <nav class="site-nav" aria-label="Розділи сторінки" data-rec="R-109">
+      <ul class="site-nav__list">
+        {NAV.map((n) => <li><a class="site-nav__link" href={n.href} data-nav-link>{n.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="site-header__phone" href={PHONE_HREF}>
+        <Icon name="phone" size={18} />
+        <span class="site-header__phone-text">{PHONE_TEXT}</span>
+        <span class="visually-hidden site-header__phone-sr">Подзвонити {PHONE_TEXT}</span>
+      </a>
+      <a class="btn btn--ghost-field site-header__book" href={BOT_HREF} target="_blank" rel="noopener">Записатися<span class="visually-hidden"> в Telegram</span></a>
+      <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+        <Icon name="menu" size={24} class="i-open" />
+        <Icon name="close" size={24} class="i-close" />
+        <span class="visually-hidden">Меню</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" hidden data-menu>
+    <nav class="container mobile-menu__inner" aria-label="Меню">
+      <ul class="mobile-menu__list">
+        {NAV.map((n) => <li><a class="mobile-menu__link" href={n.href} data-menu-link>{n.label}</a></li>)}
+      </ul>
+      <div class="mobile-menu__actions">
+        <a class="btn btn--primary btn--block" href={BOT_HREF} target="_blank" rel="noopener" data-menu-link><Icon name="telegram" />Записатися в Telegram</a>
+        <a class="btn btn--ghost-field btn--block" href={PHONE_HREF} data-menu-link><Icon name="phone" />Подзвонити {PHONE_TEXT}</a>
+      </div>
+    </nav>
+  </div>
+</header>

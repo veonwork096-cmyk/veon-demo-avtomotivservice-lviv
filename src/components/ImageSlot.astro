@@ -1,0 +1,8 @@
+---
+// Placeholder for a real client photo (no photos of the Lviv branch yet). Fixed ratio keeps CLS at 0.
+interface Props { caption: string; ratio?: "3/2" | "4/3"; class?: string; }
+const { caption, ratio = "3/2", class: cls } = Astro.props;
+---
+<figure class:list={["image-slot", cls]} style={`aspect-ratio:${ratio}`}>
+  <figcaption class="image-slot__caption">зображення клієнта: {caption}</figcaption>
+</figure>

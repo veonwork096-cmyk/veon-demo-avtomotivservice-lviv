@@ -1,0 +1,25 @@
+---
+import Icon from "./Icon.astro";
+import FutureLink from "./FutureLink.astro";
+import { BRANDS, BOT_HREF, NOTE } from "../data/site";
+---
+<section id="brands" class="brands" data-rec="R-107" aria-labelledby="brands-title">
+  <div class="container brands__grid">
+    <div class="brands__head">
+      <h2 id="brands-title" class="section-title">Марки</h2>
+      <p class="brands__note">Спеціалізація — Audi, Volkswagen і Skoda. Беремо в роботу й інші марки.</p>
+      <a class="btn btn--ghost" href={BOT_HREF} target="_blank" rel="noopener"><Icon name="telegram" />Записатися</a>
+    </div>
+    <div class="brands__plate">
+      <ul class="brands__row brands__row--vag" aria-label="Спеціалізація VAG">
+        {BRANDS.vag.map((b) => <li><FutureLink note={NOTE}>{b}</FutureLink></li>)}
+      </ul>
+      <ul class="brands__row brands__row--premium" aria-label="Преміум-марки">
+        {BRANDS.premium.map((b) => <li><FutureLink note={NOTE}>{b}</FutureLink></li>)}
+      </ul>
+      <ul class="brands__row brands__row--more" aria-label="Інші марки">
+        {BRANDS.more.map((b) => <li><FutureLink note={NOTE}>{b}</FutureLink></li>)}
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+---
+// Small inline icons, stroke/fill from currentColor. Decorative by default (aria-hidden); the control carries the text.
+type Name = "phone" | "telegram" | "pin" | "star" | "chevron" | "arrow" | "menu" | "close" | "facebook" | "instagram" | "tiktok";
+interface Props { name: Name; size?: number; class?: string; }
+const { name, size = 20, class: cls } = Astro.props;
+---
+<svg class:list={["icon", cls]} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  {name === "phone" && <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5 3.5h3.2l1.6 4.2-2.1 1.5a11 11 0 0 0 7.1 7.1l1.5-2.1 4.2 1.6V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.1A1.5 1.5 0 0 1 5 3.5Z" />}
+  {name === "telegram" && <path fill="currentColor" d="M20.7 3.6 2.9 10.5c-1.2.5-1.2 1.2-.2 1.5l4.6 1.4 1.7 5.4c.2.6.4.8.8.8.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.8l3-14.2c.3-1.2-.5-1.8-1.4-1.3ZM8.6 13.1l9.3-5.9c.5-.3.9-.1.5.2l-7.7 7-.3 3.2-1.8-4.5Z" />}
+  {name === "pin" && <g fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linejoin="round" d="M12 21s-6.5-6-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 15 12 21 12 21Z" /><circle cx="12" cy="9.8" r="2.3" /></g>}
+  {name === "star" && <path fill="currentColor" d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9L12 2.8Z" />}
+  {name === "chevron" && <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />}
+  {name === "arrow" && <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h13m-5-5 5 5-5 5" />}
+  {name === "menu" && <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />}
+  {name === "close" && <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m6 6 12 12M18 6 6 18" />}
+  {name === "facebook" && <path fill="currentColor" d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3Z" />}
+  {name === "instagram" && <g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" /><circle cx="12" cy="12" r="4" /><circle cx="17.2" cy="6.8" r=".6" fill="currentColor" /></g>}
+  {name === "tiktok" && <path fill="currentColor" d="M16.6 3c.3 2.3 1.6 3.7 3.9 3.9v2.6c-1.4.1-2.7-.3-3.9-1.1v5.4c0 6.8-7.4 9-10.4 4.1-1.9-3.2-.7-8.7 5.5-8.9v2.8c-.5.1-1 .2-1.4.4-1.4.5-2.2 1.4-2 3 .4 3.1 6.1 4 5.6-2V3h2.7Z" />}
+</svg>

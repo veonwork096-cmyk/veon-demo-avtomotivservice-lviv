@@ -1,0 +1,39 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import FutureLink from "./FutureLink.astro";
+import { NAV, SOCIALS, PHONE_HREF, PHONE_TEXT, BOT_HREF, NOTE } from "../data/site";
+const future = ["Гарантії", "Оплата частинами", "Підмінне авто", "Мережа", "Інші міста мережі", "Вакансії", "Оферта", "Політика конфіденційності"];
+---
+<footer class="site-footer on-field">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="site-footer__logo-link" href="#top"><Logo class="site-footer__logo" title="Avtomotiv Service — на початок сторінки" /></a>
+      <address class="site-footer__address">
+        вул. Хлібна, 4, Львів<br />
+        щодня 8:00–19:00<br />
+        <a href={PHONE_HREF}>{PHONE_TEXT}</a><br />
+        <a href={BOT_HREF} target="_blank" rel="noopener">Telegram-бот запису</a>
+      </address>
+    </div>
+    <nav class="site-footer__col" aria-label="Розділи сторінки у футері">
+      <p class="site-footer__head">На сторінці</p>
+      <ul>{NAV.map((n) => <li><a href={n.href}>{n.label}</a></li>)}</ul>
+    </nav>
+    <div class="site-footer__col">
+      <p class="site-footer__head">Клієнту</p>
+      <ul>{future.map((f) => <li><FutureLink note={NOTE}>{f}</FutureLink></li>)}</ul>
+    </div>
+    <div class="site-footer__col">
+      <p class="site-footer__head">Ми в соцмережах</p>
+      <ul class="site-footer__social" data-rec="S-R-009">
+        {SOCIALS.map((s) => (
+          <li><a class="social" href={s.href} target="_blank" rel="noopener"><Icon name={s.icon} size={22} /><span class="visually-hidden">{s.name} (нова вкладка)</span></a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>© AVTOMOTIV SERVICE</p>
+  </div>
+</footer>
